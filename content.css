@@ -928,19 +928,32 @@ h2[data-hideElement='false'], h3[data-hideElement='false'], h4[data-hideElement=
 }
 ins {
   color: #333;
-  background-color: #eaffea;
+  background-color: #c0ff85;
   text-decoration: none;
+  border: 1px dashed #6ea838;
+}
+ins > img {
+  border: 1px dashed #6ea838;
+  background-color: #c0ff85;
+  padding: .4em;
 }
 del {
   color: #a33;
-  background-color: #ffeaea;
+  background-color: #ffc2c2;
   text-decoration: line-through;
+  border: 1px dashed #ac3939;
 }
-del.diffimg.diffsrc {
+del > img {
+  border: 1px dashed #ac3939;
+  opacity: .3;
+  background-color: #ffc2c2;
+  padding: .4em;
+}
+del.diffimg {
   display: inline-block;
   position: relative;
 }
-del.diffimg.diffsrc:before {
+del.diffimg:before {
   position: absolute;
   content: """";
   left: 0;
@@ -998,13 +1011,18 @@ th.del {
 .diff-list > li > div {
   display: inline;
 }*/
-    .diff-list > li.new > *::before {
-        content: "";
-        border: .3em solid green;
-        position: relative;
-        width: 1em;
-        left: -2.3em;
-    }
+.diff-list > li.new > *::before {
+content: "\2003\2003\2002";
+background-color: rgba(192,255,133,.3);
+border: 1px dashed #6ea838;
+position: relative;
+border-right-width: 0;
+}
+.diff-list > li.new > *:first-child,
+/*.diff-list > li.replacement > *:first-child,*/
+.diff-list > li.removed > *:first-child {
+text-indent: -2.6em;
+}
     /*
     .diff-list > li.replacement > *::before {
         content: "";
@@ -1013,19 +1031,22 @@ th.del {
         width: 1em;
         left: -2.3em;
     }*/
-    .diff-list > li.removed > *::before {
-        content: "";
-        border: .3em solid violet;
-        position: relative;
-        width: 1em;
-        left: -2.3em;
-    }
+.diff-list > li.removed > *::before {
+content: "\2003\2003\2002";
+background-color: rgba(255,194,194,.3);
+border: 1px dashed #ac3939;
+position: relative;
+border-right-width: 0;
+text-decoration: line-through;
+color: #a33;
+}
+
     .diff-list > li.new > * > ins,
     .diff-list > li.new > * > del,
     .diff-list > li.removed > * > ins,
     .diff-list > li.removed > * > del
     /*.diff-list > li.replacement > *,*/ {
-        margin-left: -0.6em;
+        margin-left: 0;
     }
 /*
     .diff-list > li.normal:before,
